@@ -17,11 +17,16 @@ def diceRoll():
     return total
 
 counter = 0
-i       = 0
+roll = []
 os.system("clear")
-while (counter < 10):
-    roll = []
+print("Rolling Dice 230,400 times...")
+print("")
+
+while (counter < 230400):
     roll.append(diceRoll())
-    print(roll)
     counter = counter + 1
-    i = i + 1
+
+roll.sort()
+print("High Score is: ", roll[-1])
+print("Low Score is: ", roll[0])
+print("")
