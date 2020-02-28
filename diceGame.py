@@ -38,4 +38,4 @@ while (counter < 230400):
 roll.sort()
 print("High Score is: ", roll[-1])
 print("Low Score is: ", roll[0])
-print("")
+print("You are the winner")
