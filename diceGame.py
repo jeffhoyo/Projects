@@ -36,7 +36,7 @@ os.system("clear")
 print("Rolling Dice 230,400 times...")
 print("")
 
-while (counter < 130):
+while (counter < 230400):
     roll.append(diceRoll())
     counter += 1
 
@@ -59,8 +59,6 @@ xAxis = []
 while (counter3 < 130):
     xAxis.append(counter3)
     counter3 += 1
-
-
 
 def createPlot():
     plt.plot(xAxis, yAxis)
