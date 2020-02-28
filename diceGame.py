@@ -57,8 +57,26 @@ while (counter3 < 130):
     xAxis.append(counter3)
     counter3 += 1
 
-plt.plot(xAxis, yAxis)
-plt.xlabel('Roll Total')
-plt.ylabel('Count of Roll')
-plt.title('Count of Roll Total')
-plt.show()
+def createPlot():
+    plt.plot(xAxis, yAxis)
+    plt.xlabel('Roll Total')
+    plt.ylabel('Count of Roll')
+    plt.title('Count of Roll Total')
+    plt.show()
+
+def createBar():
+    plt.bar(xAxis, yAxis, width = .5)
+    plt.xlabel('Roll Total')
+    plt.ylabel('Count of Roll')
+    plt.title('Count of Roll Total')
+    plt.show()
+
+def createScatter():
+    plt.scatter(xAxis, yAxis)
+    plt.xlabel('Roll Total')
+    plt.ylabel('Count of Roll')
+    plt.title('Count of Roll Total')
+    plt.legend()
+    plt.show()
+
+createPlot()
