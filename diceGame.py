@@ -2,6 +2,8 @@
 
 import os
 import random
+import counter
+import matplotlib.pyplot as plt
 
 def possibleNumbers():
 
@@ -33,9 +35,30 @@ print("")
 
 while (counter < 230400):
     roll.append(diceRoll())
-    counter = counter + 1
+    counter += 1
 
 roll.sort()
 print("High Score is: ", roll[-1])
 print("Low Score is: ", roll[0])
-print("You are the winner")
+print("")
+print("4 has been rolled:", roll.count(4), "times.")
+print("129 has been rolled:", roll.count(129), "times.")
+print("")
+
+counter2 = 4
+yAxis = []
+while (counter2 < 130):
+    yAxis.append(roll.count(counter2))
+    counter2 += 1
+
+counter3 = 4
+xAxis = []
+while (counter3 < 130):
+    xAxis.append(counter3)
+    counter3 += 1
+
+plt.plot(xAxis, yAxis)
+plt.xlabel('Roll Total')
+plt.ylabel('Count of Roll')
+plt.title('Count of Roll Total')
+plt.show()
