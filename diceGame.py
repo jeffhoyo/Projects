@@ -60,6 +60,8 @@ while (counter3 < 130):
     xAxis.append(counter3)
     counter3 += 1
 
+
+
 def createPlot():
     plt.plot(xAxis, yAxis)
     plt.xlabel('Roll Total')
