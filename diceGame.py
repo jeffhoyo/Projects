@@ -4,6 +4,9 @@ import os
 import random
 import counter
 import matplotlib.pyplot as plt
+import plotly.express as px
+import pandas as pd
+import numpy as np
 
 def possibleNumbers():
 
@@ -33,7 +36,7 @@ os.system("clear")
 print("Rolling Dice 230,400 times...")
 print("")
 
-while (counter < 230400):
+while (counter < 130):
     roll.append(diceRoll())
     counter += 1
 
