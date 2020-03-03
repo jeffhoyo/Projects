@@ -1,17 +1,6 @@
-# Roll The Dice Game to digitize and support internal gambling habits.
-
-import os
 import random
+import os
 import matplotlib.pyplot as plt
-
-def possibleNumbers():
-
-    d4    = [1, 2, 3, 4]
-    d6    = [1, 2, 3, 4, 5, 6]
-    d8    = [1, 2, 3, 4, 5, 6, 7, 8]
-    d10   = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    d12   = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-    d0090 = [00, 10, 20, 30, 40, 50, 60, 70, 80, 90]
 
 def diceRoll():
 
@@ -26,7 +15,7 @@ def diceRoll():
     total = rand4 + rand6 + rand8 + rand10 + rand12 + rand0090
     return total
 
-def randomDice():
+def randomDiceCount():
 
     randDice  = random.randint(1, 10)
     randSides = random.randint(1, 20)
@@ -41,20 +30,12 @@ rollCount = int(input("Number of rolls? "))
 print("")
 print("Rolling Dice", rollCount, "times...")
 print("")
-print(randomDice())
+print(randomDiceCount())
 print("")
 
 while (counter < rollCount):
-    roll.append(diceRoll())
+    roll.append((diceRoll() * randomDiceCount()))
     counter += 1
-
-roll.sort()
-print("High Score is: ", roll[-1])
-print("Low Score is: ", roll[0])
-print("")
-print("4 has been rolled:", roll.count(4), "times.")
-print("129 has been rolled:", roll.count(129), "times.")
-print("")
 
 counter2 = 4
 yAxis = []
@@ -73,21 +54,6 @@ def createPlot():
     plt.xlabel('Roll Total')
     plt.ylabel('Count of Roll')
     plt.title('Count of Roll Total')
-    plt.show()
-
-def createBar():
-    plt.bar(xAxis, yAxis, width = .5)
-    plt.xlabel('Roll Total')
-    plt.ylabel('Count of Roll')
-    plt.title('Count of Roll Total')
-    plt.show()
-
-def createScatter():
-    plt.scatter(xAxis, yAxis)
-    plt.xlabel('Roll Total')
-    plt.ylabel('Count of Roll')
-    plt.title('Count of Roll Total')
-    plt.legend()
     plt.show()
 
 createPlot()
