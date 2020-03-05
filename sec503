@@ -2,4 +2,20 @@ analyze -s "2019/05/01 00:00:00" -e "2019/05/02 00:00:00" backbone | tcpdump -n 
 
 analyze -s "2019/05/01 00:00:00" -e "2019/05/02 00:00:00" backbone | tcpdump -n -r - | cut -d ' ' -f3 | cut -d '.' -f1-4 | sort | uniq -c | sort -rn | head -n10
 
-Keyd for score server: motorcycle creator tomato
+Keys for score server: motorcycle creator tomato
+
+DNS Request filters for Wireshark:
+  arp.opcode == 1
+  arp.isgratuitous == 1
+
+  tcpdump -nt -r int-server.pcap 'tcp[13] & 0x02 = 0x02'
+  tcpdump -nt -r int-server.pcap 'tcp[13] & 0x05 != 0x00' | wc -l
+
+  -S for sequence number on scoring server
+
+  172.16 /12 /16
+  192.168 /16 use for Vegas
+  10.200.200.0 /24
+
+  Firewall is outbound nat-ted
+  
