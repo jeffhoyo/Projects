@@ -99,3 +99,6 @@ analyze -s "2019/05/01 00:00:00" -e "2019/05/04 00:00:00" perimeter | tcpdump -n
 
 E2Q9:
 Q7 - Q8 = 10942
+
+E2Q10:
+sans@sec503:/sec503/working$ analyze -s "2019/05/01 10:00:00" -e "2019/05/01 14:00:00" backbone | tcpdump -n -r - 'tcp[13] & 0x3f = 0x02' | cut -d ' ' -f5 | cut -d '.' -f5 | cut -d ':' -f1 | sort | uniq -c | wc -l
