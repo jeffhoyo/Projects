@@ -24,6 +24,36 @@ Pipe to capinfos for packet counting
 analyze -s "2019/05/01 10:00:00" -e "2019/05/01 14:00:00" backbone | tcpdump -n -r - 'tcp[13] & 0x3f = 0x02 && not dst net 192.168 && not dst net 172.16' | cut -d ' ' -f5 | cut -d '.' -f1-4 | sort -nr | uniq -c | wc -l
 
 
+sans@sec503:~$ analyze -s "2019/05/01 00:00:00" -e "2019/05/04 00:00:00" perimeter | tcpdump -n -r - 'tcp[13] & 0x02 = 0x02 and tcp[13] & 0xc0 !=0 and not (dst net 172.16/12 or dst net 10.200.200.0/24 or dst net 192.168/16)' -w - | capinfos -
+reading from file -, link-type EN10MB (Ethernet)
+File name:           -
+File type:           Wireshark/tcpdump/... - pcap
+File encapsulation:  Ethernet
+File timestamp precision:  microseconds (6)
+Packet size limit:   file hdr: 65535 bytes
+Number of packets:   10 k
+File size:           0 bytes
+Data size:           722 kB
+Capture duration:    46247.625683 seconds
+First packet time:   2019-05-03 01:34:37.029469
+Last packet time:    2019-05-03 14:25:24.655152
+Data byte rate:      15 bytes/s
+Data bit rate:       124 bits/s
+Average packet size: 66.00 bytes
+Average packet rate: 0 packets/s
+SHA256:              <unknown>
+RIPEMD160:           <unknown>
+SHA1:                <unknown>
+Strict time order:   True
+Number of interfaces in file: 1
+Interface #0 info:
+                     Encapsulation = Ethernet (1 - ether)
+                     Capture length = 65535
+                     Time precision = microseconds (6)
+                     Time ticks per second = 1000000
+                     Number of stat entries = 0
+                     Number of packets = 10942
+
 sans@sec503:~$ analyze -s "2019/05/01 00:00:00" -e "2019/05/04 00:00:00" perimeter | tcpdump -n -r - 'tcp[13] & 0x02 = 0x02 and not (dst net 172.16/12 or dst net 10.200.200.0/24 or dst net 192.168/16)' -w - | capinfos -
 reading from file -, link-type EN10MB (Ethernet)
 File name:           -
@@ -53,3 +83,5 @@ Interface #0 info:
                      Time ticks per second = 1000000
                      Number of stat entries = 0
                      Number of packets = 36230
+
+sans@sec503:~$ analyze -s "2019/05/01 00:00:00" -e "2019/05/04 00:00:00" external | tcpdump -n -r - 'tcp[13] = 0x12 and src net 170.129' | cut -d ' ' -f3 | cut -d '.' -f5 | sort | uniq -c
