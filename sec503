@@ -85,3 +85,5 @@ Interface #0 info:
                      Number of packets = 36230
 
 sans@sec503:~$ analyze -s "2019/05/01 00:00:00" -e "2019/05/04 00:00:00" external | tcpdump -n -r - 'tcp[13] = 0x12 and src net 170.129' | cut -d ' ' -f3 | cut -d '.' -f5 | sort | uniq -c
+
+sans@sec503:~$ analyze -s "2019/05/01 00:00:00" -e "2019/05/04 00:00:00" backbone | tcpdump -n -r - 'tcp[13] = 0x12 and dst net 172.16/12 or dst net 10.200.200.0/24 or dst net 192.168/16' | cut -d ' ' -f5 | cut -d '.' -f5 | cut -d ':' -f1 | sort | uniq -c
