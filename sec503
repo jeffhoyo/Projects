@@ -24,7 +24,7 @@ Pipe to capinfos for packet counting
 analyze -s "2019/05/01 10:00:00" -e "2019/05/01 14:00:00" backbone | tcpdump -n -r - 'tcp[13] & 0x3f = 0x02 && not dst net 192.168 && not dst net 172.16' | cut -d ' ' -f5 | cut -d '.' -f1-4 | sort -nr | uniq -c | wc -l
 
 
-sans@sec503:~$ analyze -s "2019/05/01 00:00:00" -e "2019/05/04 00:00:00" perimeter | tcpdump -n -r - 'tcp[13] & 0x02 = 0x02 and tcp[13] & 0xc0 !=0 and not (dst net 172.16/12 or dst net 10.200.200.0/24 or dst net 192.168/16)' -w - | capinfos -
+sans@sec503:~$ analyze -s "2019/05/01 00:00:00" -e "2019/05/04 00:00:00" perimeter | tcpdump -n -r - 'tcp[13] & 0x02 = 0x02 and & 0xc0 !=0 and not (dst net 172.16/12 or dst net 10.200.200.0/24 or dst net 192.168/16)' -w - | capinfos -
 reading from file -, link-type EN10MB (Ethernet)
 File name:           -
 File type:           Wireshark/tcpdump/... - pcap
@@ -87,3 +87,15 @@ Interface #0 info:
 sans@sec503:~$ analyze -s "2019/05/01 00:00:00" -e "2019/05/04 00:00:00" external | tcpdump -n -r - 'tcp[13] = 0x12 and src net 170.129' | cut -d ' ' -f3 | cut -d '.' -f5 | sort | uniq -c
 
 sans@sec503:~$ analyze -s "2019/05/01 00:00:00" -e "2019/05/04 00:00:00" backbone | tcpdump -n -r - 'tcp[13] = 0x12 and dst net 172.16/12 or dst net 10.200.200.0/24 or dst net 192.168/16' | cut -d ' ' -f5 | cut -d '.' -f5 | cut -d ':' -f1 | sort | uniq -c
+
+
+E2Q7:
+analyze -s "2019/05/01 00:00:00" -e "2019/05/04 00:00:00" perimeter | tcpdump -n -r - 'tcp[13] & 0x3f = 0x02' -w - | capinfos -
+302639384
+
+E2Q8:
+analyze -s "2019/05/01 00:00:00" -e "2019/05/04 00:00:00" perimeter | tcpdump -n -r - 'tcp[13] = 0x02' -w - | capinfos -
+302628442
+
+E2Q9:
+Q7 - Q8 = 10942
