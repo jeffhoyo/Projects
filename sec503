@@ -102,3 +102,6 @@ Q7 - Q8 = 10942
 
 E2Q10:
 sans@sec503:/sec503/working$ analyze -s "2019/05/01 10:00:00" -e "2019/05/01 14:00:00" backbone | tcpdump -n -r - 'tcp[13] & 0x3f = 0x02' | cut -d ' ' -f5 | cut -d '.' -f5 | cut -d ':' -f1 | sort | uniq -c | wc -l
+
+
+tshark -r tcp_example.pcap -T fields -e tcp.len -w output.pcap 'tcp.len > 0' | sort | uniq -c
