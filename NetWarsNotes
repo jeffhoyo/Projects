@@ -34,3 +34,21 @@ df41df836f08deddbaf2905577888477ec10d8c6
 imap request \000
 
 imap request \000S
+
+
+05/02-00:00:44.365400  [**] [129:20:1]
+
+
+
+
+PROTOCOL-TELNET not on console
+PROTOCOL-TELNET login incorrect
+
+# alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"OS-LINUX Linux Kernel Challenge ACK provocation attempt"; flow:to_server,no_stream; flags:R; detection_filter:track by_src, count 200, seconds 1; metadata:policy max-detect-ips drop, ruleset community; reference:bugtraq,91704; reference:cve,2016-5696; reference:cve,2017-7285; classtype:attempted-admin; sid:40063; rev:5;)
+
+05/02-22:00:11.891078  [**] [1:36650:2] PROTOCOL-ICMP Squid Pinger IPv6 denial of service attempt [**] [Classification: Attempted Denial of Service] [Priority: 2] {ICMP} 192.168.10.50 -> 192.168.49.10
+
+
+
+
+grep -w "36650" backbone dmz servers external perimeter | cut -d '>' -f2 | cut -d ' ' -f2 | sort | uniq | wc -l

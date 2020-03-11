@@ -109,3 +109,20 @@ tshark -r tcp_example.pcap -T fields -e tcp.len -w output.pcap 'tcp.len > 0' | s
 
 Packet_Rats
 PacketRats2020
+
+
+10.200
+192.168
+172.16
+
+
+grep "10.200.\|192.168.\|172.16." ip_list_q2
+
+
+
+http://192.168.10.3/wp-admin/load-scripts.php?c=0&load%5B%5D=customize-base,customize-controls,accordion,jquery-ui-core,jquery-ui-widget,jquery-ui-mouse,jquery-ui-sortable,jquery-ui-draggab&load%5B%5D=le,jquery-ui-droppable,underscore,backbone,wp-util,wp-backbone,customize-widgets,media-models,wp-plupload,shortcode,mediaelement&load%5B%5D=,wp-mediaelement,media-views,media-editor,media-audiovideo,wp-playlist,mce-view,imgareaselect,image-edit,customize-models,custom&load%5B%5D=ize-views,jquery-ui-slider,jquery-touch-punch,iris,wp-color-picker,suggest&ver=4.0.1
+
+http://192.168.10.3/wp-admin/load-scripts.php?c=0&load%5B%5D=customize-base,customize-controls,accordion,jquery-ui-core,jquery-ui-widget,jquery-ui-mouse,jquery-ui-sortable,jquery-ui-draggab&load%5B%5D=le,jquery-ui-droppable,underscore,backbone,wp-util,wp-backbone,customize-widgets,media-models,wp-plupload,shortcode,mediaelement&load%5B%5D=,wp-mediaelement,media-views,media-editor,media-audiovideo,wp-playlist,mce-view,imgareaselect,image-edit,customize-models,custom&load%5B%5D=ize-views,jquery-ui-slider,jquery-touch-punch,iris,wp-color-picker,suggest&ver=4.0.1
+
+
+http://192.168.10.3/wp-admin/wp-admin/load-scripts.php?c=0&load%5B%5D=hoverIntent,common,admin-bar,wp-ajax-response,jquery-color,wp-lists,quicktags,jquery-query,admin-comments,jquery-ui-core,jquery-&load%5B%5D=ui-widget,jquery-ui-mouse,jquery-ui-sortable,postbox,dashboard,customize-base,customize-loader,thickbox,plugin-install,underscor&load%5B%5D=e,shortcode,media-upload,svg-painter,heartbeat,wp-auth-check,word-count,wplink&ver=4.0.1
