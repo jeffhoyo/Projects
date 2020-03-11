@@ -3,11 +3,11 @@ from scapy.all import *
 # our packet callback
 def packet_callback(packet):
 
-    print(packet.summary())
-    print("")
-    print("-----------------")
-    print("")
-    print(packet.show())
+    # print(packet.summary())
+    # print("-----------------")
+    print(packet.getlayer(Dot3).dst)
+    print(packet.getlayer(Dot3).src)
+    print(packet.getlayer(Dot3).len)
 
 # fire up our sniffer
-sniff(iface="lo0",prn=packet_callback,count=2)
+sniff(iface="en0",filter="stp",prn=packet_callback,count=50)
