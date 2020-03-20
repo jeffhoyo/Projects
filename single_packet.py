@@ -7,10 +7,10 @@ def packet_callback(packet):
     print("-----------------")
     print(packet.show())
     print("-----------------")
-    print(packet.getlayer(IP in ICMP).ttl)
+    # print(packet.getlayer(IP in ICMP).ttl)
     # print(packet.getlayer(Dot3).dst)
     # print(packet.getlayer(Dot3).src)
     # print(packet.getlayer(Dot3).len)
 
 # fire up our sniffer
-sniff(iface="lo0",prn=packet_callback,count=50)
+sniff(iface="en0",prn=packet_callback,count=50)
