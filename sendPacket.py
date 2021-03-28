@@ -3,17 +3,7 @@ import random
 import os
 import time
 
-
-
-
-
 def mainMenu():
-
-    #Set variables to null so program knows variables are not set
-    srcInt = None
-    dstHost = None
-    dstPort = None
-    packetType = None
 
     os.system("clear")
     ## Show menu ##
@@ -23,14 +13,10 @@ def mainMenu():
     print("2. Select DST Host")
     print("3. Select DST Port")
     print("4. Select type of Packet")
+    print(30 * '-')
 
-    if srcInt is None:
-        print(30 * '-')
-        print("Diagnostics: ")
-        print(30 * '-')
-        print("Int not Selected")
-    else:
-        print("Int Selected")
+    #Set variables to null so program knows variables are not set
+    packetType = None
 
     ## Get input ###
     choice = int(input('Enter your choice [1-4] : '))
@@ -38,18 +24,24 @@ def mainMenu():
     ### Take action as per selected menu-option ###
     if choice == 1:
             os.system("clear")
-            print("en0 has been selected as INT")
-            srcInt = os.system('ifconfig | grep "broadcast" | cut -d " " -f 2')
+            srcInt = str(os.system('ifconfig | grep "broadcast" | cut -d " " -f 2'))
+            print(srcInt)
             time.sleep(2)
             mainMenu()
     elif choice == 2:
             os.system("clear")
-            print("Select Destination Host")
+            global dstHost
+            dstHost = str(input("Enter destination IP: "))
+            print("Destination Host set as: %s" % dstHost)
             time.sleep(2)
             mainMenu()
     elif choice == 3:
             os.system("clear")
-            print("Select DST Port")
+            global dstPort
+            dstPort = str(input("Enter destination Port: "))
+            print("Destination Port set as: %s" % dstPort)
+            print()
+            print("Destination set as: %s:%s" % (dstHost,dstPort))
             time.sleep(2)
             mainMenu()
     elif choice == 4:
