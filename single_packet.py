@@ -1,4 +1,4 @@
-from scapy.all import *
+from scapy import *
 
 # our packet callback
 def packet_callback(packet):
