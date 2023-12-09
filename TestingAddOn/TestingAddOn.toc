@@ -1,0 +1,8 @@
+## Interface: 30403
+## Title: Testing |cFF8B008BFrost Tracker|r
+## Author: Rinestiri-Faerlina NA
+## Version: 0.1
+## Notes: Test
+## SavedVariables: FT_db
+
+TestingAddOn.lua
