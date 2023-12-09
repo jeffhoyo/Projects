@@ -5,7 +5,7 @@ local unitName, nextReset, arg2, currencyId
 local FT = FrostTracker
 
 local FrostTracker_Frame = CreateFrame("Frame")
---FrostTracker_Frame:RegisterEvent("CURRENCY_DISPLAY_UPDATE")
+FrostTracker_Frame:RegisterEvent("CURRENCY_DISPLAY_UPDATE")
 FrostTracker_Frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 
 function FT.UpdateTable(unitName, currencyAmount)
@@ -28,7 +28,7 @@ end
 
 function FT.GetData()
     local info = C_CurrencyInfo.GetCurrencyInfo(341);
-    currencyAmount = info.quantity
+    local currencyAmount = info.quantity
     FT.UpdateTable(unitName, currencyAmount)
 
 end
@@ -56,7 +56,7 @@ function FT.OnEvent(self, event, arg1, arg2)
                 weeklyTotal = weeklyTotal + diff;
             end
         end
-        FT.UpdateTotal(unitname, weeklyTotal)
+        FT.UpdateTotal(unitName, weeklyTotal)
 	end
 end
 
