@@ -6,7 +6,7 @@ local FT = FrostTracker
 local event = "CURRENCY_DISPLAY_UPDATE"
 local unitName = "Vanthuss"
 local arg1 = 341
-local arg2 = 100
+local arg2 = 70
 local count
 local FT_db = {
 	["Rinestiri"] = {
@@ -34,7 +34,7 @@ if event == "CURRENCY_DISPLAY_UPDATE" and arg2 ~= 0 then
     --unitName = UnitName("player")
     local diff;
     local weeklyTotal = 24;
-    local nextReset = 1702393200;
+    local nextReset = 1702393200;  --Tuesday, December 12th, 
     local epochWeek = 604800;
     
     --local currentTime = date()
@@ -48,6 +48,20 @@ if event == "CURRENCY_DISPLAY_UPDATE" and arg2 ~= 0 then
     end
     --print(arg2)
     --print(unitName.." : "..count)
+    print(os.date("%Y-%m-%d_%H:%M:%S", nextReset))
+    print(os.date("%Y-%m-%d_%H:%M:%S", currentTime))
     FT.UpdateTotal(unitName, weeklyTotal)
 end
+
 print(FT_db[unitName].weeklyTotal)
+
+-- -- Testing reset Generation by Epoch
+-- local nextReset = 1702393200;  --Tuesday, December 12th, 
+-- local epochWeek = 604800;
+-- local i = 1
+-- while i < 10 do
+--     local nextReset = nextReset + (epochWeek * i)
+--     print(os.date("%Y-%m-%d_%H:%M:%S", nextReset))
+--     --print(nextReset)
+--     i = i + 1
+-- end
